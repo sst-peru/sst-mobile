@@ -7,6 +7,7 @@ import pe.sst.app.data.local.TokenStore
 import pe.sst.app.data.remote.ApiClient
 import pe.sst.app.data.repository.AuthRepository
 import pe.sst.app.data.repository.ReportRepository
+import pe.sst.app.data.repository.SgsstRepository
 import pe.sst.app.sync.ReportSyncWorker
 
 /**
@@ -24,6 +25,7 @@ class AppContainer(application: Application) {
 
     val reportRepository = ReportRepository(api, database.pendingReports())
     val authRepository = AuthRepository(api, tokenStore)
+    val sgsstRepository = SgsstRepository(api)
 }
 
 class SstApplication : Application() {
