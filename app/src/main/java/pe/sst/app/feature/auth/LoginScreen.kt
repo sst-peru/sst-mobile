@@ -10,6 +10,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,7 +25,11 @@ import kotlinx.coroutines.launch
 import pe.sst.app.AppContainer
 
 @Composable
-fun LoginScreen(container: AppContainer, onLoggedIn: () -> Unit) {
+fun LoginScreen(
+    container: AppContainer,
+    onLoggedIn: () -> Unit,
+    onRegister: () -> Unit,
+) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var error by remember { mutableStateOf<String?>(null) }
@@ -84,6 +89,10 @@ fun LoginScreen(container: AppContainer, onLoggedIn: () -> Unit) {
         ) {
             if (loading) CircularProgressIndicator(modifier = Modifier.padding(4.dp))
             else Text("Ingresar")
+        }
+
+        TextButton(onClick = onRegister, modifier = Modifier.padding(top = 8.dp)) {
+            Text("No tengo cuenta, quiero registrarme")
         }
     }
 }
